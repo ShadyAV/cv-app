@@ -6,6 +6,10 @@ const DivWrapper = styled.div`
     display: flex;
     max-width: 100%;
     flex: 1;
+    gap: 10px;
+    @media (max-width: 1461px) {
+        gap: 24px;
+    }
 `
 
 class Date extends Component {

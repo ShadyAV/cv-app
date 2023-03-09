@@ -13,14 +13,17 @@ const Label = styled.label`
 `
 
 const StyledInput = styled.input`
-    min-width: ${props => props.type === "date" ? "100px" : "285px"};
-    margin-right: ${props => props.type === "date" ? "10px" : "0px"};
+    min-width: ${props => props.type === "date" ? "100%" : "285px"};
+    max-width: ${props => props.type === "date" ? "140px" : "100%"};
     background-color: #e3f2fd;
     border: none;
     border-radius: 2px;
     outline: none;
     font-size: 20px;
     padding: 12px 16px;
+    @media (max-width: 1461px) {
+        max-width: 100%;
+    }
 `
 
 class Input extends Component {

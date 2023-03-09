@@ -1,4 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+    border-radius: 2px;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    color: dodgerblue;
+    padding: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    &:hover {
+        background-color: #e3f2fd;
+        cursor: pointer;
+    }
+`
 
 class Button extends Component {
     constructor(props) {
@@ -8,7 +24,7 @@ class Button extends Component {
 
     render() {
         return (
-            <button>{this.props.text}</button>
+            <StyledButton onClick={this.props.onClick} data-index={this.props.dataIndex}>{this.props.text}</StyledButton>
         );
     }
 

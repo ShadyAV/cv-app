@@ -16,12 +16,14 @@ const Label = styled.label`
 const StyledFileInput = styled.input`
     min-width: ${props => props.type === "date" ? "100px" : "285px"};
     margin-right: ${props => props.type === "date" ? "10px" : "0px"};
-    font-size: 20px;
+    font-size: 16px;
     &::file-selector-button {
+        font-family: 'Share Tech', sans-serif;
+        font-weight: 600;
         color: dodgerblue;
         border: thin solid grey;
         border-radius: 2px;
-        font-size: 20px;
+        font-size: 16px;
         padding: 6px;
     }
 `

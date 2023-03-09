@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import headerIcon from '../assets/header-icon.png';
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
     display: flex;
     color: #f5f1ed;
     background-color: #002855;
     padding: 20px 40px;
     gap: 1rem;
     align-items: center;
+    min-width: 100vw;
 `
 
 class Header extends Component {

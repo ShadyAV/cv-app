@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Input from '../utils/Input';
 import styled from 'styled-components';
 import FileInput from '../utils/FileInput';
-import Date from '../utils/Date';
 import TextArea from '../utils/TextArea';
+import Button from '../utils/Button';
+import Employer from './Employer';
+import uniqid from "uniqid";
+import Education from './Education';
 
 const FormContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-    width: 50%
+    padding: 40px 80px;
+    flex: 1;
 `
 
 const StyledSection = styled.section`
@@ -20,25 +21,80 @@ const StyledSection = styled.section`
 const FormSection = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 12px;
 `
 
 const StyledHeader = styled.h3`
-    margin-bottom: 16px;
+    margin: 16px 0px;
 `
 
 const DoubleInput = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 24px;
-    gap: 40px;
+    gap: 24px;
+`
+const History = styled.div`
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e3f2fd;
+    padding: 16px 16px 0px 16px;
+    margin-bottom: 0px;
 `
 
 class Form extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            employer: {
+                id: uniqid(),
+                employerIds: [],
+            },
+            education: {
+                id: uniqid(),
+                educationIds: [],
+            }
+        };
+
     }
+
+    addEmployer = () => {
+        this.setState({
+            employer: {
+                id: uniqid(),
+                employerIds: [...this.state.employer.employerIds, this.state.employer.id],
+            }
+        });
+    }
+
+    deleteEmployer = (e) => {
+        let empId = e.target.getAttribute('data-index');
+        this.setState({
+            employer: {
+                id: this.state.employer.id,
+                employerIds: this.state.employer.employerIds.filter(id => id !== empId),
+            }
+        });
+    };
+
+    addEducation = () => {
+        this.setState({
+            education: {
+                id: uniqid(),
+                educationIds: [...this.state.education.educationIds, this.state.education.id],
+            }
+        });
+    }
+
+    deleteEducation = (e) => {
+        let empId = e.target.getAttribute('data-index');
+        this.setState({
+            education: {
+                id: this.state.education.id,
+                educationIds: this.state.education.educationIds.filter(id => id !== empId),
+            }
+        });
+    };
 
     render() {
         return (
@@ -64,30 +120,12 @@ class Form extends Component {
                         </DoubleInput>
                         <TextArea label={'Description'} />
                     </FormSection>
-                    <FormSection>
-                        <StyledHeader>Experience</StyledHeader>
-                        <DoubleInput>
-                            <Input type={'text'} label={'Job title'} />
-                            <Input type={'text'} label={'Employer'} />
-                        </DoubleInput>
-                        <DoubleInput>
-                            <Date />
-                            <Input type={'text'} label={'City'} />
-                        </DoubleInput>
-                        <TextArea label={'Description'} />
-                    </FormSection>
-                    <FormSection>
-                        <StyledHeader>Education</StyledHeader>
-                        <DoubleInput>
-                            <Input type={'text'} label={'School'} />
-                            <Input type={'text'} label={'Degree'} />
-                        </DoubleInput>
-                        <DoubleInput>
-                            <Date />
-                            <Input type={'text'} label={'City'} />
-                        </DoubleInput>
-                        <TextArea label={'Description'} />
-                    </FormSection>
+                    <StyledHeader>Employment History</StyledHeader>
+                    <Employer ids={this.state.employer.employerIds} deleteEmployer={this.deleteEmployer} />
+                    <Button text={'+ Add one more employment'} onClick={this.addEmployer} />
+                    <StyledHeader>Education</StyledHeader>
+                    <Education ids={this.state.education.educationIds} deleteEducation={this.deleteEducation} />
+                    <Button text={'+ Add one more education'} onClick={this.addEducation} ></Button>
                 </StyledSection>
             </FormContainer>
         );
