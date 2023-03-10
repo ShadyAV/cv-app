@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const StylerdFooter = styled.footer`
-    text-align: center;
-    background-color: #001233;
-    color: #fff
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    padding: 6px;
+    width: 50%;
+    @media (max-width: 1199px) {
+        width: 100%;
+    }
 `
 
 class Footer extends Component {
     render() {
         return (
             <StylerdFooter>
-                <p>avshady 2023</p>
+                <p>© avshady 2023</p>
             </StylerdFooter>
         );
     }

@@ -20,7 +20,7 @@ const StyledFileInput = styled.input`
     &::file-selector-button {
         font-family: 'Share Tech', sans-serif;
         font-weight: 600;
-        color: dodgerblue;
+        color: #6096ba;
         border: thin solid grey;
         border-radius: 2px;
         font-size: 16px;

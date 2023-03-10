@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Theme from '../../styles/Theme';
 
 const DivWrapper = styled.div`
     display: flex;
@@ -15,7 +16,7 @@ const Label = styled.label`
 const StyledInput = styled.input`
     min-width: ${props => props.type === "date" ? "100%" : "285px"};
     max-width: ${props => props.type === "date" ? "140px" : "100%"};
-    background-color: #e3f2fd;
+    background-color: ${Theme.colors.lightblue};
     border: none;
     border-radius: 2px;
     outline: none;

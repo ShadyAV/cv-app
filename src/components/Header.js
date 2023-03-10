@@ -4,12 +4,14 @@ import headerIcon from '../assets/header-icon.png';
 
 const HeaderWrapper = styled.header`
     display: flex;
-    color: #f5f1ed;
-    background-color: #002855;
-    padding: 20px 40px;
+    color: #000;
+    padding: 40px 0px 0px 80px;
     gap: 1rem;
     align-items: center;
-    min-width: 100vw;
+    width: 50%;
+    @media (max-width: 1199px) {
+        width: 100%;
+    }
 `
 
 class Header extends Component {

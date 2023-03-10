@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Theme from '../../styles/Theme';
 
 const DivWrapper = styled.div`
     display: flex;
@@ -12,7 +13,7 @@ const DivWrapper = styled.div`
 const StyledArea = styled.textarea`
     width: 100%;
     height: 200px;
-    background-color: #e3f2fd;
+    background-color: ${Theme.colors.lightblue};
     border: none;
     outline: none;
     resize: none;

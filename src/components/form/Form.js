@@ -10,7 +10,8 @@ import Education from './Education';
 
 const FormContainer = styled.div`
     padding: 40px 80px;
-    flex: 1;
+    width: 100%;
+    height: 100%;
 `
 
 const StyledSection = styled.section`
@@ -32,13 +33,6 @@ const DoubleInput = styled.div`
     flex-wrap: wrap;
     margin-bottom: 24px;
     gap: 24px;
-`
-const History = styled.div`
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #e3f2fd;
-    padding: 16px 16px 0px 16px;
-    margin-bottom: 0px;
 `
 
 class Form extends Component {
