@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledSection = styled.section`
     display: flex;
@@ -14,6 +14,15 @@ const StyledSection = styled.section`
     @media (max-width: 1199px) {
         visibility: hidden;
     }
+    ${(props) =>
+        props.view &&
+        css`
+            visibility: visible;
+            width: 100%;
+            @media (max-width: 1199px) {
+                visibility: visible;
+            }
+        `}
 `
 
 const PreviewMain = styled.div`
@@ -42,6 +51,11 @@ const MainArea = styled.div`
     border-right: 2px solid #e7ecef;
 `
 
+const Aside = styled.aside`
+    grid-row: 2/3;
+    grid-column: 2/3;
+`
+
 class Preview extends Component {
     constructor(props) {
         super(props)
@@ -50,18 +64,36 @@ class Preview extends Component {
 
     render() {
         return (
-            <StyledSection>
+            <StyledSection view={this.props.view}>
                 <PreviewMain>
                     <PersonalArea>
                         <h1>John Smith</h1>
                         <p>Frontend Developer</p>
                         <p>It is my summary</p>
+                        <p>Novosibirsk, Russia</p>
+                        <p>89134601937</p>
+                        <p>jshadymail@gmail.com</p>
                     </PersonalArea>
                     <AvatarArea></AvatarArea>
                     <MainArea>
                         <h2>Employment History</h2>
+                        <p>Network Engineer at Eltex, Novosibirsk</p>
+                        <p>November 2020 - February 2021</p>
+                        <p>Job desc</p>
                         <h2>Education</h2>
+                        <p>Bachelor at SGUGiT, Novosibirsk</p>
+                        <p>September 2017 - September 2021</p>
+                        <p>Education desc</p>
                     </MainArea>
+                    <Aside>
+                        <h2>Skills</h2>
+                        <p>HTML</p>
+                        <p>CSS</p>
+                        <p>JS</p>
+                        <h2>Languages</h2>
+                        <p>Russian</p>
+                        <p>English</p>
+                    </Aside>
                 </PreviewMain>
             </StyledSection>
         );

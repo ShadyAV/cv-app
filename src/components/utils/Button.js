@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
     border-radius: 2px;
@@ -14,6 +14,15 @@ const StyledButton = styled.button`
         background-color: #e3f2fd;
         cursor: pointer;
     }
+    ${(props) =>
+        props.previewBtn &&
+        css`
+          background-color: blue;
+          color: #fff;
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+        `}
 `
 
 class Button extends Component {
@@ -24,7 +33,12 @@ class Button extends Component {
 
     render() {
         return (
-            <StyledButton onClick={this.props.onClick} data-index={this.props.dataIndex}>{this.props.text}</StyledButton>
+            <StyledButton
+                previewBtn={this.props.previewBtn}
+                onClick={this.props.onClick}
+                data-index={this.props.dataIndex}>
+                {this.props.text}
+            </StyledButton>
         );
     }
 

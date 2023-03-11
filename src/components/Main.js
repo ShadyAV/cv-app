@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './form/Form';
 import Preview from './preview/Preview';
 import styled from 'styled-components';
+import Button from './utils/Button';
 
 const StyledMain = styled.main`
     display: flex;
@@ -16,13 +17,23 @@ class Main extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            view: true,
+        }
+    }
+
+    handleView = () => {
+        this.setState({
+            view: this.state.view === true ? false : true,
+        })
     }
 
     render() {
         return (
             <StyledMain>
                 <Form />
-                <Preview />
+                <Preview view={this.state.view === true ? null : true} />
+                <Button text={'Preview'} previewBtn onClick={this.handleView} />
             </StyledMain>
         );
     }

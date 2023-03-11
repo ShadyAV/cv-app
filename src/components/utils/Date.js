@@ -7,6 +7,7 @@ const DivWrapper = styled.div`
     max-width: 100%;
     flex: 1;
     gap: 10px;
+    flex-wrap: wrap;
     @media (max-width: 1461px) {
         gap: 24px;
     }

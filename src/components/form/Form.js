@@ -121,6 +121,7 @@ class Form extends Component {
                     <Education ids={this.state.education.educationIds} deleteEducation={this.deleteEducation} />
                     <Button text={'+ Add one more education'} onClick={this.addEducation} ></Button>
                 </StyledSection>
+
             </FormContainer>
         );
     }
