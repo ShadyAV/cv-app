@@ -20,6 +20,10 @@ const DoubleInput = styled.div`
     gap: 24px;
 `
 
+const StyledHeader = styled.h3`
+    margin: 16px 0px;
+`
+
 class Education extends Component {
     constructor(props) {
         super(props)
@@ -29,19 +33,30 @@ class Education extends Component {
     render() {
         return (
             <>
-                {this.props.ids.map((id) => {
+                <StyledHeader>Education</StyledHeader>
+                {this.props.ids.map((item) => {
                     return (
-                        <History key={id}>
+                        <History key={item.id}>
                             <DoubleInput>
-                                <Input type={'text'} label={'School'} />
-                                <Input type={'text'} label={'Degree'} />
+                                <Input
+                                    type={'text'}
+                                    label={'School'} />
+                                <Input
+                                    type={'text'}
+                                    label={'Degree'} />
                             </DoubleInput>
                             <DoubleInput>
                                 <Date />
-                                <Input type={'text'} label={'City'} />
+                                <Input
+                                    type={'text'}
+                                    label={'City'} />
                             </DoubleInput>
-                            <TextArea label={'Description'} />
-                            <Button text={'Remove'} dataIndex={id} onClick={this.props.deleteEducation}></Button>
+                            <TextArea
+                                label={'Description'} />
+                            <Button
+                                text={'Remove'}
+                                dataIndex={item.id}
+                                onClick={this.props.deleteEducation}></Button>
                         </History>
                     );
                 })}

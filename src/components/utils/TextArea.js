@@ -29,8 +29,11 @@ class TextArea extends Component {
     render() {
         return (
             <DivWrapper>
-                <label htmlFor={this.props.label}>{this.props.label}</label>
-                <StyledArea id={this.props.label}></StyledArea>
+                <label
+                    htmlFor={this.props.label}>
+                    {this.props.label}</label>
+                <StyledArea
+                    id={this.props.label}></StyledArea>
             </DivWrapper>
         );
     }

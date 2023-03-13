@@ -17,8 +17,12 @@ class Date extends Component {
     render() {
         return (
             <DivWrapper>
-                <Input type={'date'} label={'Start Date'} />
-                <Input type={'date'} label={'End Date'} />
+                <Input
+                    type={'date'}
+                    label={'Start Date'} />
+                <Input
+                    type={'date'}
+                    label={'End Date'} />
             </DivWrapper>
         );
     }

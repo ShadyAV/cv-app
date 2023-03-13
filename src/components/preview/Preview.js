@@ -19,6 +19,7 @@ const StyledSection = styled.section`
         css`
             visibility: visible;
             width: 100%;
+            position: absolute;
             @media (max-width: 1199px) {
                 visibility: visible;
             }
@@ -31,7 +32,10 @@ const PreviewMain = styled.div`
     background-color: #fff;
     padding: 12px;
     min-width: 600px;
+    width: 210mm;
+    height: 297mm;    
     border-radius: 6px;
+    overflow-y: auto;
 `
 const PersonalArea = styled.div`
     grid-row: 1/2;
@@ -56,6 +60,21 @@ const Aside = styled.aside`
     grid-column: 2/3;
 `
 
+const HeaderDiv = styled.div`
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr;
+`
+
+const TopHeader = styled.div`
+    grid-row: 1/3;
+    grid-column: 1/3;
+`
+
+const BotHeader = styled.div`
+    grid-row: 2/3;
+    grid-column: 2/3;
+`
+
 class Preview extends Component {
     constructor(props) {
         super(props)
@@ -67,12 +86,18 @@ class Preview extends Component {
             <StyledSection view={this.props.view}>
                 <PreviewMain>
                     <PersonalArea>
-                        <h1>John Smith</h1>
-                        <p>Frontend Developer</p>
-                        <p>It is my summary</p>
-                        <p>Novosibirsk, Russia</p>
-                        <p>89134601937</p>
-                        <p>jshadymail@gmail.com</p>
+                        <HeaderDiv>
+                            <TopHeader>
+                                <h1>John Smith</h1>
+                                <p>Frontend Developer</p>
+                                <p>It is my summary</p>
+                            </TopHeader>
+                            <BotHeader>
+                                <p>Novosibirsk, Russia</p>
+                                <p>89134601937</p>
+                                <p>jshadymail@gmail.com</p>
+                            </BotHeader>
+                        </HeaderDiv>
                     </PersonalArea>
                     <AvatarArea></AvatarArea>
                     <MainArea>

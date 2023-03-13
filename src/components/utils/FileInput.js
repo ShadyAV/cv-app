@@ -37,8 +37,14 @@ class FileInput extends Component {
     render() {
         return (
             <DivWrapper>
-                <Label htmlFor={this.props.label}>{this.props.label}</Label>
-                <StyledFileInput type={this.props.type} id={this.props.label} accept='image/*' />
+                <Label
+                    htmlFor={this.props.label}>
+                    {this.props.label}
+                </Label>
+                <StyledFileInput
+                    type={this.props.type}
+                    id={this.props.label}
+                    accept='image/*' />
             </DivWrapper>
         );
     }

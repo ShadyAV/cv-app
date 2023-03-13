@@ -18,7 +18,9 @@ class Header extends Component {
     render() {
         return (
             <HeaderWrapper>
-                <img src={headerIcon} height={45}></img>
+                <img
+                    src={headerIcon}
+                    height={45}></img>
                 <h1>CV - Create Your Resume</h1>
             </HeaderWrapper>
         );

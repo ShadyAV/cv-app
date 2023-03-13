@@ -36,7 +36,7 @@ class Input extends Component {
         return (
             <DivWrapper>
                 <Label htmlFor={this.props.label}>{this.props.label}</Label>
-                <StyledInput type={this.props.type} id={this.props.label} accept='image/*' />
+                <StyledInput type={this.props.type} id={this.props.label} accept='image/*' onChange={this.props.onChange} />
             </DivWrapper>
         );
     }
