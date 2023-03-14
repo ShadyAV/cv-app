@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import Form from './form/Form';
 import Preview from './preview/Preview';
 import styled from 'styled-components';
-import Button from './utils/Button';
 import uniqid from "uniqid";
 import Data from './preview/Data';
 
 const StyledMain = styled.main`
     display: flex;
     justify-content: center;
-    width: 50%;
-    @media (max-width: 1199px) {
-        width: 100%;
+    @media (max-width: 1330px) {
+        flex-direction: column;
     }
 `
 
@@ -20,16 +18,9 @@ class Main extends Component {
         super(props)
 
         this.state = {
-            view: true,
             resume: Data,
         }
     }
-
-    handleView = () => {
-        this.setState({
-            view: this.state.view === true ? false : true,
-        })
-    };
 
     handleChangePersonal = (e) => {
         this.setState({
@@ -176,13 +167,8 @@ class Main extends Component {
                     onChangeEducation={this.handleChangeEducation}
                     resume={this.state.resume} />
                 <Preview
-                    view={this.state.view === true ? null : true}
                     resume={this.state.resume} />
-                <Button
-                    text={'Preview'}
-                    previewBtn
-                    onClick={this.handleView} />
-            </StyledMain>
+            </StyledMain >
         );
     }
 

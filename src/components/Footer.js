@@ -7,10 +7,7 @@ const StylerdFooter = styled.footer`
     align-items: center;
     color: #000;
     padding: 6px;
-    width: 50%;
-    @media (max-width: 1199px) {
-        width: 100%;
-    }
+    width: 100%;
 `
 
 class Footer extends Component {

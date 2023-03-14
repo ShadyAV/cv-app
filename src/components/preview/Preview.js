@@ -1,77 +1,85 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import Theme from '../../styles/Theme';
+import Button from '../utils/Button';
+import ReactToPrint from 'react-to-print';
 
 const StyledSection = styled.section`
     display: flex;
-    justify-content: center;
-    background-color: #8b8c89;
-    width: 50%;
-    padding: 40px 0px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    @media (max-width: 1199px) {
-        visibility: hidden;
-    }
-    ${(props) =>
-        props.view &&
-        css`
-            visibility: visible;
-            width: 100%;
-            @media (max-width: 1199px) {
-                visibility: visible;
-            }
-        `}
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 `
 
 const PreviewMain = styled.div`
+    padding: 5mm;
+    font-size: 20px;
     display: grid; 
-    grid-template: 2fr 8fr/ 7fr 3fr;
-    background-color: #fff;
-    padding: 12px;
-    min-width: 600px;
-    aspect-ratio: 1/1.4;
- 
-    border-radius: 6px;
-    overflow-y: auto;
+    grid-template: 54.4mm 232.6mm / 142mm 58mm;
+    background-color: ${Theme.colors.lightblue};
+    width: 210mm;
+    height: 297mm;    
+    border-radius: 2px;
+    @media (max-width: 820px) {
+        grid-template: calc(54.4mm*0.9) calc(232.6mm*0.9) / calc(142mm*0.9) calc(58mm*0.9);
+        width: calc(210mm*0.9);
+        height: calc(297mm*0.9);    
+    }
+    @media (max-width: 740px) {
+        grid-template: calc(54.4mm*0.8) calc(232.6mm*0.8) / calc(142mm*0.8) calc(58mm*0.8);
+        width: calc(210mm*0.8);
+        height: calc(297mm*0.8);    
+    }
+    @media (max-width: 650px) {
+        grid-template: calc(54.4mm*0.7) calc(232.6mm*0.7) / calc(142mm*0.7) calc(58mm*0.7);
+        width: calc(210mm*0.7);
+        height: calc(297mm*0.7);    
+    }
+    @media (max-width: 570px) {
+        grid-template: calc(54.4mm*0.6) calc(232.6mm*0.6) / calc(142mm*0.6) calc(58mm*0.6);
+        width: calc(210mm*0.6);
+        height: calc(297mm*0.6);    
+    }
+    @media (max-width: 490px) {
+        grid-template: calc(54.4mm*0.5) calc(232.6mm*0.5) / calc(142mm*0.5) calc(58mm*0.5);
+        width: calc(210mm*0.5);
+        height: calc(297mm*0.5);    
+    }
+    @media (max-width: 400px) {
+        grid-template: calc(54.4mm*0.4) calc(232.6mm*0.4) / calc(142mm*0.4) calc(58mm*0.4);
+        width: calc(210mm*0.4);
+        height: calc(297mm*0.4);    
+    }
 `
 const PersonalArea = styled.div`
-    grid-row: 1/2;
-    grid-column: 1/2;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
 `
 
 const AvatarArea = styled.div`
-    grid-row: 1/2;
-    grid-column: 2/3;
-    background-color: #8b8c89;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    background-color: dodgerblue;
 `
 
 const MainArea = styled.div`
-    grid-row: 2/3;
-    grid-column: 1/2;
-    border-top: 2px solid #e7ecef;
-    border-right: 2px solid #e7ecef;
-`
-
-const Aside = styled.aside`
-    grid-row: 2/3;
-    grid-column: 2/3;
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
 `
 
 const HeaderDiv = styled.div`
     display: grid;
-    grid-template: 1fr 1fr/ 1fr 1fr;
+    grid-template: 1fr 1fr / 1fr 1fr;
 `
 
 const TopHeader = styled.div`
-    grid-row: 1/3;
-    grid-column: 1/3;
+    grid-row: 1 / 3;
+    grid-column: 1 / 3;
 `
 
 const BotHeader = styled.div`
-    grid-row: 2/3;
-    grid-column: 2/3;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
 `
 
 class Preview extends Component {
@@ -82,8 +90,8 @@ class Preview extends Component {
 
     render() {
         return (
-            <StyledSection view={this.props.view}>
-                <PreviewMain>
+            <StyledSection>
+                <PreviewMain ref={el => (this.componentRef = el)}>
                     <PersonalArea>
                         <HeaderDiv>
                             <TopHeader>
@@ -109,16 +117,11 @@ class Preview extends Component {
                         <p>September 2017 - September 2021</p>
                         <p>Education desc</p>
                     </MainArea>
-                    <Aside>
-                        <h2>Skills</h2>
-                        <p>HTML</p>
-                        <p>CSS</p>
-                        <p>JS</p>
-                        <h2>Languages</h2>
-                        <p>Russian</p>
-                        <p>English</p>
-                    </Aside>
                 </PreviewMain>
+                <ReactToPrint
+                    trigger={() => <Button text={'To PDF'} />}
+                    content={() => this.componentRef}
+                />
             </StyledSection>
         );
     }

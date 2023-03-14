@@ -6,9 +6,10 @@ import Education from './Education';
 import Personal from './Personal';
 
 const FormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     padding: 40px 80px;
     width: 100%;
-    height: 100%;
 `
 
 const StyledSection = styled.section`
@@ -38,7 +39,7 @@ class Form extends Component {
                     <Education
                         ids={this.props.resume.Education}
                         deleteEducation={this.props.onDeleteEducation}
-                        changeEducation={this.props.onChangeEducation} />
+                        changeEmployer={this.props.onChangeEmployer} />
                     <Button
                         text={'+ Add one more education'}
                         onClick={this.props.onAddEducation} />

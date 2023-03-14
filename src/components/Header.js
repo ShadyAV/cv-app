@@ -8,10 +8,7 @@ const HeaderWrapper = styled.header`
     padding: 40px 0px 0px 80px;
     gap: 1rem;
     align-items: center;
-    width: 50%;
-    @media (max-width: 1199px) {
-        width: 100%;
-    }
+    width: 100%;
 `
 
 class Header extends Component {

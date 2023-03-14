@@ -13,26 +13,10 @@ const Data = {
         Description: '',
     },
     'Employment History': [
-        {
-            id: uniqid(),
-            'Job Title': '',
-            Employer: '',
-            'Start Date': '',
-            'End Date': '',
-            City: '',
-            Description: '',
-        },
+
     ],
     Education: [
-        {
-            id: uniqid(),
-            School: '',
-            Degree: '',
-            'Start Date': '',
-            'End Date': '',
-            City: '',
-            Description: '',
-        },
+
     ],
 };
 
