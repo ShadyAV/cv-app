@@ -29,7 +29,53 @@ class Main extends Component {
         this.setState({
             view: this.state.view === true ? false : true,
         })
-    }
+    };
+
+    handleChangePersonal = (e) => {
+        this.setState({
+            resume: {
+                'Personal Information': {
+                    'Job Title': e.target.id === 'Job Title' ? e.target.value : this.state.resume['Personal Information']['Job Title'],
+                    Photo: e.target.id === 'Photo' ? '' : this.state.resume['Personal Information'].Photo,
+                    'First Name': e.target.id === 'First Name' ? e.target.value : this.state.resume['Personal Information']['First Name'],
+                    'Last Name': e.target.id === 'Last Name' ? e.target.value : this.state.resume['Personal Information']['Last Name'],
+                    Country: e.target.id === 'Country' ? e.target.value : this.state.resume['Personal Information'].Country,
+                    City: e.target.id === 'City' ? e.target.value : this.state.resume['Personal Information'].City,
+                    Email: e.target.id === 'Email' ? e.target.value : this.state.resume['Personal Information'].Email,
+                    Phone: e.target.id === 'Phone' ? e.target.value : this.state.resume['Personal Information'].Phone,
+                    Description: e.target.id === 'Description' ? e.target.value : this.state.resume['Personal Information'].Description,
+                },
+                'Employment History': this.state.resume['Employment History'],
+                Education: this.state.resume.Education,
+            },
+        });
+    };
+
+    handleChangeEmployer = (e, id) => {
+        const newStateEmp = this.state.resume['Employment History'].map(obj => {
+            const index = this.state.resume['Employment History'].indexOf(obj);
+            if (obj.id == id) {
+                return {
+                    ...obj,
+                    id: this.state.resume['Employment History'][index].id,
+                    'Job Title': e.target.id === 'Job Title Employer' ? e.target.value : this.state.resume['Employment History'][index]['Job Title'],
+                    Employer: e.target.id === 'Employer' ? e.target.value : this.state.resume['Employment History'][index]['Employer'],
+                    'Start Date': e.target.id === 'Start Date Employer' ? e.target.value : this.state.resume['Employment History'][index]['Start Date'],
+                    'End Date': e.target.id === 'End Date Employer' ? e.target.value : this.state.resume['Employment History'][index]['End Date'],
+                    City: e.target.id === 'City Employer' ? e.target.value : this.state.resume['Employment History'][index]['City'],
+                    Description: e.target.id === 'Description Employer' ? e.target.value : this.state.resume['Employment History'][index]['Description'],
+                };
+            }
+            return obj;
+        })
+        this.setState({
+            resume: {
+                'Personal Information': this.state.resume['Personal Information'],
+                'Employment History': newStateEmp,
+                Education: this.state.resume.Education,
+            },
+        })
+    };
 
     handleAddEmployer = () => {
         this.setState({
@@ -59,6 +105,32 @@ class Main extends Component {
                 Education: this.state.resume.Education,
             }
         });
+    };
+
+    handleChangeEducation = (e, id) => {
+        const newStateEdu = this.state.resume.Education.map(obj => {
+            const index = this.state.resume.Education.indexOf(obj);
+            if (obj.id == id) {
+                return {
+                    ...obj,
+                    id: this.state.resume.Education[index].id,
+                    'School': e.target.id === 'School' ? e.target.value : this.state.resume.Education[index]['School'],
+                    Degree: e.target.id === 'Degree' ? e.target.value : this.state.resume.Education[index]['Degree'],
+                    'Start Date': e.target.id === 'Start Date Education' ? e.target.value : this.state.resume.Education[index]['Start Date'],
+                    'End Date': e.target.id === 'End Date Education' ? e.target.value : this.state.resume.Education[index]['End Date'],
+                    City: e.target.id === 'City Education' ? e.target.value : this.state.resume.Education[index]['City'],
+                    Description: e.target.id === 'Description Education' ? e.target.value : this.state.resume.Education[index]['Description'],
+                };
+            }
+            return obj;
+        })
+        this.setState({
+            resume: {
+                'Personal Information': this.state.resume['Personal Information'],
+                'Employment History': this.state.resume['Employment History'],
+                Education: newStateEdu,
+            },
+        })
     };
 
     handleAddEducation = () => {
@@ -99,6 +171,9 @@ class Main extends Component {
                     onDeleteEmployer={this.handleDeleteEmployer}
                     onAddEducation={this.handleAddEducation}
                     onDeleteEducation={this.handleDeleteEducation}
+                    onChangePersonal={this.handleChangePersonal}
+                    onChangeEmployer={this.handleChangeEmployer}
+                    onChangeEducation={this.handleChangeEducation}
                     resume={this.state.resume} />
                 <Preview
                     view={this.state.view === true ? null : true}

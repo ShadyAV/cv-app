@@ -40,19 +40,31 @@ class Employer extends Component {
                             <DoubleInput>
                                 <Input
                                     type={'text'}
-                                    label={'Job title'} />
+                                    label={'Job Title'}
+                                    onChange={(e) => this.props.changeEmployer(e, item.id)}
+                                    id={'Job Title Employer'} />
                                 <Input
                                     type={'text'}
-                                    label={'Employer'} />
+                                    label={'Employer'}
+                                    onChange={(e) => this.props.changeEmployer(e, item.id)}
+                                    id={'Employer'} />
                             </DoubleInput>
                             <DoubleInput>
-                                <Date />
+                                <Date
+                                    onChange={this.props.changeEmployer}
+                                    idStart={'Start Date Employer'}
+                                    idEnd={'End Date Employer'}
+                                    id={item.id} />
                                 <Input
                                     type={'text'}
-                                    label={'City'} />
+                                    label={'City'}
+                                    onChange={(e) => this.props.changeEmployer(e, item.id)}
+                                    id={'City Employer'} />
                             </DoubleInput>
                             <TextArea
-                                label={'Description'} />
+                                label={'Description'}
+                                onChange={(e) => this.props.changeEmployer(e, item.id)}
+                                id={'Description Employer'} />
                             <Button
                                 text={'Remove'}
                                 dataIndex={item.id}

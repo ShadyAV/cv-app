@@ -33,37 +33,54 @@ class Personal extends Component {
                 <DoubleInput>
                     <Input
                         type={'text'}
-                        label={'Job Title'} />
+                        label={'Job Title'}
+                        onChange={this.props.changePersonal}
+                        personal />
                     <FileInput
                         type={'file'}
-                        label={'Photo'} />
+                        label={'Photo'}
+                        onChange={this.props.changePersonal} />
                 </DoubleInput>
                 <DoubleInput>
                     <Input
                         type={'text'}
-                        label={'First Name'} />
+                        label={'First Name'}
+                        onChange={this.props.changePersonal}
+                        personal />
                     <Input
                         type={'text'}
-                        label={'Last Name'} />
+                        label={'Last Name'}
+                        onChange={this.props.changePersonal}
+                        personal />
                 </DoubleInput>
                 <DoubleInput>
                     <Input
                         type={'text'}
-                        label={'Country'} />
+                        label={'Country'}
+                        onChange={this.props.changePersonal}
+                        personal />
                     <Input
                         type={'text'}
-                        label={'City'} />
+                        label={'City'}
+                        onChange={this.props.changePersonal}
+                        personal />
                 </DoubleInput>
                 <DoubleInput>
                     <Input
                         type={'email'}
-                        label={'Email'} />
+                        label={'Email'}
+                        onChange={this.props.changePersonal}
+                        personal />
                     <Input
                         type={'tel'}
-                        label={'Phone'} />
+                        label={'Phone'}
+                        onChange={this.props.changePersonal}
+                        personals />
                 </DoubleInput>
                 <TextArea
-                    label={'Description'} />
+                    label={'Description'}
+                    onChange={this.props.changePersonal}
+                    personal />
             </FormSection>
         );
     }

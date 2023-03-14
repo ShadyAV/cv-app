@@ -26,16 +26,19 @@ class Form extends Component {
         return (
             <FormContainer>
                 <StyledSection>
-                    <Personal />
+                    <Personal
+                        changePersonal={this.props.onChangePersonal} />
                     <Employer
                         ids={this.props.resume["Employment History"]}
-                        deleteEmployer={this.props.onDeleteEmployer} />
+                        deleteEmployer={this.props.onDeleteEmployer}
+                        changeEmployer={this.props.onChangeEmployer} />
                     <Button
                         text={'+ Add one more employment'}
                         onClick={this.props.onAddEmployer} />
                     <Education
                         ids={this.props.resume.Education}
-                        deleteEducation={this.props.onDeleteEducation} />
+                        deleteEducation={this.props.onDeleteEducation}
+                        changeEducation={this.props.onChangeEducation} />
                     <Button
                         text={'+ Add one more education'}
                         onClick={this.props.onAddEducation} />

@@ -30,10 +30,11 @@ class TextArea extends Component {
         return (
             <DivWrapper>
                 <label
-                    htmlFor={this.props.label}>
+                    htmlFor={this.props.personal ? this.props.label : this.props.id}>
                     {this.props.label}</label>
                 <StyledArea
-                    id={this.props.label}></StyledArea>
+                    id={this.props.personal ? this.props.label : this.props.id}
+                    onChange={this.props.onChange}></StyledArea>
             </DivWrapper>
         );
     }

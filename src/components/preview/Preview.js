@@ -19,7 +19,6 @@ const StyledSection = styled.section`
         css`
             visibility: visible;
             width: 100%;
-            position: absolute;
             @media (max-width: 1199px) {
                 visibility: visible;
             }
@@ -32,8 +31,8 @@ const PreviewMain = styled.div`
     background-color: #fff;
     padding: 12px;
     min-width: 600px;
-    width: 210mm;
-    height: 297mm;    
+    aspect-ratio: 1/1.4;
+ 
     border-radius: 6px;
     overflow-y: auto;
 `

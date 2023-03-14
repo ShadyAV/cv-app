@@ -19,10 +19,14 @@ class Date extends Component {
             <DivWrapper>
                 <Input
                     type={'date'}
-                    label={'Start Date'} />
+                    label={'Start Date'}
+                    onChange={(e) => this.props.onChange(e, this.props.id)}
+                    id={this.props.idStart} />
                 <Input
                     type={'date'}
-                    label={'End Date'} />
+                    label={'End Date'}
+                    onChange={(e) => this.props.onChange(e, this.props.id)}
+                    id={this.props.idEnd} />
             </DivWrapper>
         );
     }

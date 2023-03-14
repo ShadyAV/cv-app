@@ -35,8 +35,13 @@ class Input extends Component {
     render() {
         return (
             <DivWrapper>
-                <Label htmlFor={this.props.label}>{this.props.label}</Label>
-                <StyledInput type={this.props.type} id={this.props.label} accept='image/*' onChange={this.props.onChange} />
+                <Label
+                    htmlFor={this.props.personal ? this.props.label : this.props.id}>
+                    {this.props.label}</Label>
+                <StyledInput
+                    type={this.props.type}
+                    id={this.props.personal ? this.props.label : this.props.id}
+                    onChange={this.props.onChange} />
             </DivWrapper>
         );
     }

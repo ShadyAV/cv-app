@@ -44,6 +44,7 @@ class FileInput extends Component {
                 <StyledFileInput
                     type={this.props.type}
                     id={this.props.label}
+                    onChange={this.props.onChange}
                     accept='image/*' />
             </DivWrapper>
         );
