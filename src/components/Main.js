@@ -27,7 +27,7 @@ class Main extends Component {
             resume: {
                 'Personal Information': {
                     'Job Title': e.target.id === 'Job Title' ? e.target.value : this.state.resume['Personal Information']['Job Title'],
-                    Photo: e.target.id === 'Photo' ? '' : this.state.resume['Personal Information'].Photo,
+                    Photo: this.state.resume['Personal Information'].Photo,
                     'First Name': e.target.id === 'First Name' ? e.target.value : this.state.resume['Personal Information']['First Name'],
                     'Last Name': e.target.id === 'Last Name' ? e.target.value : this.state.resume['Personal Information']['Last Name'],
                     Country: e.target.id === 'Country' ? e.target.value : this.state.resume['Personal Information'].Country,
@@ -41,6 +41,32 @@ class Main extends Component {
             },
         });
     };
+
+    handleUploadFile = (e) => {
+        const reader = new FileReader();
+        const file = e.target.files[0];
+
+        reader.onload = (e) => {
+            this.setState({
+                resume: {
+                    'Personal Information': {
+                        'Job Title': this.state.resume['Personal Information']['Job Title'],
+                        Photo: e.target.result,
+                        'First Name': this.state.resume['Personal Information']['First Name'],
+                        'Last Name': this.state.resume['Personal Information']['Last Name'],
+                        Country: this.state.resume['Personal Information'].Country,
+                        City: this.state.resume['Personal Information'].City,
+                        Email: this.state.resume['Personal Information'].Email,
+                        Phone: this.state.resume['Personal Information'].Phone,
+                        Description: this.state.resume['Personal Information'].Description,
+                    },
+                    'Employment History': this.state.resume['Employment History'],
+                    Education: this.state.resume.Education,
+                },
+            });
+        };
+        reader.readAsDataURL(file);
+    }
 
     handleChangeEmployer = (e, id) => {
         const newStateEmp = this.state.resume['Employment History'].map(obj => {
@@ -165,6 +191,7 @@ class Main extends Component {
                     onChangePersonal={this.handleChangePersonal}
                     onChangeEmployer={this.handleChangeEmployer}
                     onChangeEducation={this.handleChangeEducation}
+                    onUploadFile={this.handleUploadFile}
                     resume={this.state.resume} />
                 <Preview
                     resume={this.state.resume} />

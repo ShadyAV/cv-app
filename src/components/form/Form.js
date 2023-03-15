@@ -28,7 +28,8 @@ class Form extends Component {
             <FormContainer>
                 <StyledSection>
                     <Personal
-                        changePersonal={this.props.onChangePersonal} />
+                        changePersonal={this.props.onChangePersonal}
+                        uploadFile={this.props.onUploadFile} />
                     <Employer
                         ids={this.props.resume["Employment History"]}
                         deleteEmployer={this.props.onDeleteEmployer}
@@ -39,7 +40,7 @@ class Form extends Component {
                     <Education
                         ids={this.props.resume.Education}
                         deleteEducation={this.props.onDeleteEducation}
-                        changeEmployer={this.props.onChangeEmployer} />
+                        changeEducation={this.props.onChangeEducation} />
                     <Button
                         text={'+ Add one more education'}
                         onClick={this.props.onAddEducation} />

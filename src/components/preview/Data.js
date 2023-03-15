@@ -1,5 +1,3 @@
-import uniqid from "uniqid";
-
 const Data = {
     'Personal Information': {
         'Job Title': '',

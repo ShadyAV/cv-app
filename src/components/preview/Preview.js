@@ -59,27 +59,49 @@ const PersonalArea = styled.div`
 const AvatarArea = styled.div`
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    background-color: dodgerblue;
 `
 
 const MainArea = styled.div`
     grid-row: 2 / 3;
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
 `
 
 const HeaderDiv = styled.div`
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
+    max-width: 142mm;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2; 
 `
 
-const TopHeader = styled.div`
-    grid-row: 1 / 3;
-    grid-column: 1 / 3;
-`
-
-const BotHeader = styled.div`
+const Aside = styled.aside`
+    padding-top: 20px;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+`
+
+const StyledHeader = styled.h1`
+    line-height: 1;
+    font-size: 60px;
+    color: dodgerblue;
+`
+
+const JobTitle = styled.p`
+    font-weight: 600;
+    font-size: 30px;
+    color: dodgerblue;
+`
+
+const Summary = styled.p`
+    max-width: 142mm;
+`
+
+const StyledH2 = styled.h2`
+    padding-top: 20px;
+    color: dodgerblue;
+`
+
+const StyledImg = styled.img`
+    width: ${props => props.resume['Personal Information'].Photo ? "100%" : null};
+    height: ${props => props.resume['Personal Information'].Photo ? "100%" : null};
 `
 
 class Preview extends Component {
@@ -94,29 +116,75 @@ class Preview extends Component {
                 <PreviewMain ref={el => (this.componentRef = el)}>
                     <PersonalArea>
                         <HeaderDiv>
-                            <TopHeader>
-                                <h1>John Smith</h1>
-                                <p>Frontend Developer</p>
-                                <p>It is my summary</p>
-                            </TopHeader>
-                            <BotHeader>
-                                <p>Novosibirsk, Russia</p>
-                                <p>89134601937</p>
-                                <p>jshadymail@gmail.com</p>
-                            </BotHeader>
+                            <StyledHeader>
+                                {this.props.resume['Personal Information']['First Name']}{' '}
+                                {this.props.resume['Personal Information']['Last Name']}</StyledHeader>
+                            <JobTitle>{this.props.resume['Personal Information']['Job Title']}</JobTitle>
+                            <Summary>{this.props.resume['Personal Information'].Description}</Summary>
                         </HeaderDiv>
                     </PersonalArea>
-                    <AvatarArea></AvatarArea>
+                    <AvatarArea>
+                        <StyledImg
+                            resume={this.props.resume}
+                            src={this.props.resume['Personal Information'].Photo}>
+                        </StyledImg>
+                    </AvatarArea>
                     <MainArea>
-                        <h2>Employment History</h2>
-                        <p>Network Engineer at Eltex, Novosibirsk</p>
-                        <p>November 2020 - February 2021</p>
-                        <p>Job desc</p>
-                        <h2>Education</h2>
-                        <p>Bachelor at SGUGiT, Novosibirsk</p>
-                        <p>September 2017 - September 2021</p>
-                        <p>Education desc</p>
+                        <StyledH2>
+                            {this.props.resume['Employment History'][0] ? 'Employment History' : null}
+                        </StyledH2>
+                        {this.props.resume['Employment History'].map((item) => {
+                            return (
+                                <div key={item.id}>
+                                    <p>
+                                        {item['Job Title']}
+                                        {item.Employer ? ' at ' : null}
+                                        {item.Employer}
+                                        {item.City ? ', ' : null}
+                                        {item.City}
+                                    </p>
+                                    <p>
+                                        {item['Start Date']}
+                                        {item['Start Date'] && item['End Date'] ? ' - ' : null}
+                                        {item['End Date']}
+                                    </p>
+                                    <p>{item.Description}</p>
+                                </div>
+                            );
+                        })}
+
+                        <StyledH2>
+                            {this.props.resume.Education[0] ? 'Education' : null}
+                        </StyledH2>
+                        {this.props.resume.Education.map((item) => {
+                            return (
+                                <div key={item.id}>
+                                    <p>
+                                        {item.School}
+                                        {item.Degree ? ' at ' : null}
+                                        {item.Degree}
+                                        {item.City ? ', ' : null}
+                                        {item.City}
+                                    </p>
+                                    <p>
+                                        {item['Start Date']}
+                                        {item['Start Date'] && item['End Date'] ? ' - ' : null}
+                                        {item['End Date']}
+                                    </p>
+                                    <p>{item.Description}</p>
+                                </div>
+                            );
+                        })}
                     </MainArea>
+                    <Aside>
+                        <p>
+                            {this.props.resume['Personal Information'].City}
+                            {this.props.resume['Personal Information'].City ? ', ' : null}
+                            {this.props.resume['Personal Information'].Country}
+                        </p>
+                        <p>{this.props.resume['Personal Information'].Phone}</p>
+                        <p>{this.props.resume['Personal Information'].Email}</p>
+                    </Aside>
                 </PreviewMain>
                 <ReactToPrint
                     trigger={() => <Button text={'To PDF'} />}

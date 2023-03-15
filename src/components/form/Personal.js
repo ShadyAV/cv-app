@@ -39,7 +39,7 @@ class Personal extends Component {
                     <FileInput
                         type={'file'}
                         label={'Photo'}
-                        onChange={this.props.changePersonal} />
+                        onChange={this.props.uploadFile} />
                 </DoubleInput>
                 <DoubleInput>
                     <Input
@@ -75,7 +75,7 @@ class Personal extends Component {
                         type={'tel'}
                         label={'Phone'}
                         onChange={this.props.changePersonal}
-                        personals />
+                        personal />
                 </DoubleInput>
                 <TextArea
                     label={'Description'}
