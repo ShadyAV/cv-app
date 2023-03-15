@@ -9,7 +9,22 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 40px 80px;
-    width: 100%;
+    flex: 1;
+    @media (max-width: 820px) {
+        padding: 30px 60px;
+    }
+    @media (max-width: 740px) {
+        padding: 25px 55px;
+    }
+    @media (max-width: 490px) {
+        padding: 20px 45px;
+    }
+    @media (max-width: 400px) {
+        padding: 20px 35px;
+    }
+    @media (max-width: 322px) {
+        padding: 15px 25px;
+    }
 `
 
 const StyledSection = styled.section`

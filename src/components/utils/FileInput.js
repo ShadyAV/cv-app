@@ -14,7 +14,7 @@ const Label = styled.label`
 `
 
 const StyledFileInput = styled.input`
-    min-width: ${props => props.type === "date" ? "100px" : "285px"};
+    min-width: ${props => props.type === "date" ? "100px" : "100px"};
     margin-right: ${props => props.type === "date" ? "10px" : "0px"};
     font-size: 16px;
     &::file-selector-button {

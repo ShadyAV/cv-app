@@ -14,7 +14,7 @@ const Label = styled.label`
 `
 
 const StyledInput = styled.input`
-    min-width: ${props => props.type === "date" ? "100%" : "285px"};
+    min-width: ${props => props.type === "date" ? "100%" : "100%"};
     max-width: ${props => props.type === "date" ? "140px" : "100%"};
     background-color: ${Theme.colors.lightblue};
     border: none;

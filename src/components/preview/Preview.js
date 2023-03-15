@@ -8,7 +8,7 @@ const StyledSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    flex: 1;
 `
 
 const PreviewMain = styled.div`
@@ -21,34 +21,25 @@ const PreviewMain = styled.div`
     height: 297mm;    
     border-radius: 2px;
     @media (max-width: 820px) {
-        grid-template: calc(54.4mm*0.9) calc(232.6mm*0.9) / calc(142mm*0.9) calc(58mm*0.9);
-        width: calc(210mm*0.9);
-        height: calc(297mm*0.9);    
+        transform: scale(0.9);
     }
     @media (max-width: 740px) {
-        grid-template: calc(54.4mm*0.8) calc(232.6mm*0.8) / calc(142mm*0.8) calc(58mm*0.8);
-        width: calc(210mm*0.8);
-        height: calc(297mm*0.8);    
+        transform: scale(0.81);
     }
     @media (max-width: 650px) {
-        grid-template: calc(54.4mm*0.7) calc(232.6mm*0.7) / calc(142mm*0.7) calc(58mm*0.7);
-        width: calc(210mm*0.7);
-        height: calc(297mm*0.7);    
+        transform: scale(0.7);
     }
     @media (max-width: 570px) {
-        grid-template: calc(54.4mm*0.6) calc(232.6mm*0.6) / calc(142mm*0.6) calc(58mm*0.6);
-        width: calc(210mm*0.6);
-        height: calc(297mm*0.6);    
+        transform: scale(0.6);
     }
     @media (max-width: 490px) {
-        grid-template: calc(54.4mm*0.5) calc(232.6mm*0.5) / calc(142mm*0.5) calc(58mm*0.5);
-        width: calc(210mm*0.5);
-        height: calc(297mm*0.5);    
+        transform: scale(0.5);
     }
     @media (max-width: 400px) {
-        grid-template: calc(54.4mm*0.4) calc(232.6mm*0.4) / calc(142mm*0.4) calc(58mm*0.4);
-        width: calc(210mm*0.4);
-        height: calc(297mm*0.4);    
+        transform: scale(0.4); 
+    }
+    @media (max-width: 322px) {
+        transform: scale(0.37); 
     }
 `
 const PersonalArea = styled.div`
@@ -91,7 +82,7 @@ const JobTitle = styled.p`
 `
 
 const Summary = styled.p`
-    max-width: 142mm;
+    overflow-wrap: break-word;
 `
 
 const StyledH2 = styled.h2`
@@ -148,7 +139,7 @@ class Preview extends Component {
                                         {item['Start Date'] && item['End Date'] ? ' - ' : null}
                                         {item['End Date']}
                                     </p>
-                                    <p>{item.Description}</p>
+                                    <Summary>{item.Description}</Summary>
                                 </div>
                             );
                         })}
@@ -171,7 +162,7 @@ class Preview extends Component {
                                         {item['Start Date'] && item['End Date'] ? ' - ' : null}
                                         {item['End Date']}
                                     </p>
-                                    <p>{item.Description}</p>
+                                    <Summary>{item.Description}</Summary>
                                 </div>
                             );
                         })}

@@ -9,6 +9,21 @@ const HeaderWrapper = styled.header`
     gap: 1rem;
     align-items: center;
     width: 100%;
+    @media (max-width: 820px) {
+        padding: 30px 0px 0px 60px;
+    }
+    @media (max-width: 740px) {
+        padding: 25px 0px 0px 55px;
+    }
+    @media (max-width: 490px) {
+        padding: 20px 0px 0px 45px;
+    }
+    @media (max-width: 400px) {
+        padding: 20px 0px 0px 35px;
+    }
+    @media (max-width: 322px) {
+        padding: 15px 0px 0px 25px;
+    }
 `
 
 class Header extends Component {
